@@ -4,18 +4,21 @@ import { Pet } from "../models/pet";
 import { createMenuObject } from "../helpers/createMenuObject";
 
 export const home = (req: Request, res: Response) => {
+    let list = Pet.getAll();
+
     res.render('pages/page', {
         menu:createMenuObject('all'),
         banner: {
             title: 'todos os animais',
             background:'allanimals.jpg'
-        }
+        },
+        list
     })
 
 }
 
 export const dogs = (req: Request, res:Response)=>{
-    let list = Pet.getAll();
+    
 
     res.render('pages/page', {
         menu:createMenuObject('dog'),
@@ -23,7 +26,7 @@ export const dogs = (req: Request, res:Response)=>{
             title: 'Cachorros',
             background:'banner_dog.jpg'
         },
-        list
+        
     })
 
 }
